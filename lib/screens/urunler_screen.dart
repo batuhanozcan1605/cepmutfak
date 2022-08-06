@@ -76,7 +76,7 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
                 if(snapshot.hasData) {
                   var urunlerListesi = snapshot.data;
                   return GridView.builder(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(10),
                     shrinkWrap: true,
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,

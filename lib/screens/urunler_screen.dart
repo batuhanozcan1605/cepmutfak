@@ -1,7 +1,5 @@
-import 'package:cepmutfak/widgets/UrunCard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../database/Urunlerdao.dart';
 import '../models/Kategoriler.dart';
 import '../models/Urunler.dart';
@@ -41,7 +39,7 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF4D818C),
-        title: Text('Cep Mutfak'),
+        title: Text('Ürünler'),
         centerTitle: true,
       ),
       body: Column(
@@ -78,6 +76,8 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
                 if(snapshot.hasData) {
                   var urunlerListesi = snapshot.data;
                   return GridView.builder(
+                    padding: EdgeInsets.all(8),
+                    shrinkWrap: true,
                       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,
                         childAspectRatio: 1,
@@ -89,7 +89,7 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
                           onTap: (){
 
                           },
-                          child: UrunCard(urun.urun_name)
+                          child: urunCard(urun.urun_name)
                         );
                       });
                 } else {
@@ -102,4 +102,44 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
       ),
     );
   }
+
+  Widget urunCard(String urun_name) => Card(
+    clipBehavior: Clip.antiAlias,
+    shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(10),
+    ),
+    child: Column(
+      children: [
+        Flexible(
+          child: Image.asset('images/karpuz.png'),
+          flex: 3,
+        ),
+        Flexible(
+          flex: 1,
+            child: Container(
+              height: 25,
+              color: Colors.white,
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 4),
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: FittedBox(
+                    fit: BoxFit.fitHeight,
+                    child: Text(
+                      urun_name,
+                      style: const TextStyle(
+                        fontFamily: 'Segoe UI',
+                        fontSize: 12,
+                        color: const Color(0xff013440),
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+        ),
+      ],
+    ),
+  );
 }

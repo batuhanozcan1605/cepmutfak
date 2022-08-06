@@ -1,7 +1,6 @@
 import 'package:cepmutfak/database/Kategorilerdao.dart';
 import 'package:cepmutfak/database/Urunlerdao.dart';
 import 'package:cepmutfak/screens/urunler_screen.dart';
-import 'package:cepmutfak/widgets/KategoriCard.dart';
 import 'package:flutter/material.dart';
 import '../models/Kategoriler.dart';
 import '../models/Urunler.dart';
@@ -124,7 +123,7 @@ class _EkleScreenState extends State<EkleScreen> {
                         onTap: (){
                           Navigator.push(context, MaterialPageRoute(builder: (context) => UrunlerScreen(kategori: kategori,)));
                         },
-                        child: KategoriCard(kategori.kategori_name),
+                        child: kategoriCard(kategori.kategori_name),
                       );
                     });
               } else {
@@ -138,6 +137,7 @@ class _EkleScreenState extends State<EkleScreen> {
     );
   }
 
+  Widget kategoriCard(String kategori_name) => Card(
 
-
+  );
 }

@@ -1,6 +1,7 @@
 import 'package:cepmutfak/database/Kategorilerdao.dart';
 import 'package:cepmutfak/database/Urunlerdao.dart';
 import 'package:cepmutfak/screens/urunler_screen.dart';
+import 'package:cepmutfak/screens/urunlerbody_screen.dart';
 import 'package:flutter/material.dart';
 import '../models/Kategoriler.dart';
 import '../models/Urunler.dart';
@@ -16,6 +17,7 @@ class EkleScreen extends StatefulWidget {
 class _EkleScreenState extends State<EkleScreen> {
   final controller = TextEditingController();
   bool onTappedSearch = false;
+
 
   Future<List<Kategoriler>> showAllKategoriler() async {
     var kategoriListesi = await Kategorilerdao().allKategoriler();
@@ -171,11 +173,11 @@ class _EkleScreenState extends State<EkleScreen> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => UrunlerScreen(
+                                            builder: (context) => UrunlerBodyScreen(
                                                   kategori: kategori,
                                                 )));
                                   },
-                                  child: kategoriCard(kategori.kategori_name),
+                                  child: kategoriCard(kategori.kategori_name, kategori.kategori_image),
                                 );
                               });
                         } else {
@@ -187,7 +189,7 @@ class _EkleScreenState extends State<EkleScreen> {
       ),
     );
   }
-  Widget kategoriCard(String kategori_name) => Card(
+  Widget kategoriCard(String kategori_name, kategori_image) => Card(
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
@@ -199,7 +201,7 @@ class _EkleScreenState extends State<EkleScreen> {
                 child: SizedBox(
                     width: 65,
                     height: 56,
-                    child: Image.asset('images/meyveler.png'))),
+                    child: Image.asset('images/${kategori_image}'))),
             Align(
               alignment: Alignment(0.509, 0.0),
               child: Text(

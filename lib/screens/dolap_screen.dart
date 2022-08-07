@@ -1,3 +1,4 @@
+import 'package:cepmutfak/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class DolapScreen extends StatefulWidget {
@@ -7,7 +8,10 @@ class DolapScreen extends StatefulWidget {
   State<DolapScreen> createState() => _DolapScreenState();
 }
 
-class _DolapScreenState extends State<DolapScreen> {
+
+class _DolapScreenState extends State<DolapScreen>  {
+
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -16,7 +20,7 @@ class _DolapScreenState extends State<DolapScreen> {
         appBar: AppBar(
           backgroundColor: Color(0xFF4D818C),
           title: Text('Cep Mutfak'),
-          bottom: const TabBar(
+          bottom: TabBar(
             tabs: [
               Tab(text: 'BUZDOLABI'),
               Tab(text: 'KILER'),

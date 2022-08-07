@@ -201,7 +201,7 @@ class _EkleScreenState extends State<EkleScreen> {
                 child: SizedBox(
                     width: 65,
                     height: 56,
-                    child: Image.asset('images/${kategori_image}'))),
+                    child: Image.asset('images/kategoriler/${kategori_image}'))),
             Align(
               alignment: Alignment(0.509, 0.0),
               child: Text(

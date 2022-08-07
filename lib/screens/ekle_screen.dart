@@ -1,6 +1,5 @@
 import 'package:cepmutfak/database/Kategorilerdao.dart';
 import 'package:cepmutfak/database/Urunlerdao.dart';
-import 'package:cepmutfak/screens/urunler_screen.dart';
 import 'package:cepmutfak/screens/urunlerbody_screen.dart';
 import 'package:flutter/material.dart';
 import '../models/Kategoriler.dart';
@@ -58,7 +57,7 @@ class _EkleScreenState extends State<EkleScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF4D818C),
-        title: Text('Cep Mutfak'),
+        title: SvgPicture.asset('images/appbar_logo.svg'),
         centerTitle: true,
       ),
       body: Column(

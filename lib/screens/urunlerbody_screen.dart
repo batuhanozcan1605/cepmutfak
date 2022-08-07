@@ -38,7 +38,7 @@ class _UrunlerBodyScreenState extends State<UrunlerBodyScreen> with TickerProvid
             Tab(text: 'Sebzeler'),
             Tab(text: 'Fırın'),
             Tab(text: 'Mandıra'),
-            Tab(text: 'İçecekelr'),
+            Tab(text: 'İçecekler'),
             Tab(text: 'Etler'),
             Tab(text: 'Atıştırmalıklar'),
             Tab(text: 'Alkollü İçecekler'),

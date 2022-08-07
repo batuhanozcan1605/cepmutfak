@@ -15,10 +15,6 @@ class UrunlerScreen extends StatefulWidget {
 
 class _UrunlerScreenState extends State<UrunlerScreen> {
 
-  final controller = TextEditingController();
-  bool onChange = false;
-
-
   Future<List<Urunler>> showUrunler(int kategori_id) async {
     print("showurunler");
     var urunlerListesi= await Urunlerdao().allUrunlerByKategoriId(kategori_id);
@@ -52,11 +48,11 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
                       onTap: (){
 
                       },
-                      child: urunCard(urun.urun_name)
+                      child: urunCard(urun.urun_name, urun.urun_image)
                     );
                   });
             } else {
-              return Center(child: Text("No data"));
+              return Center(child: Text(""));
             }
           }
         ),
@@ -64,7 +60,7 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
 
   }
 
-  Widget urunCard(String urun_name) => Card(
+  Widget urunCard(String urun_name, String urun_image) => Card(
     clipBehavior: Clip.antiAlias,
     shape: RoundedRectangleBorder(
     borderRadius: BorderRadius.circular(10),
@@ -72,7 +68,7 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
     child: Column(
       children: [
         Flexible(
-          child: Image.asset('images/karpuz.png'),
+          child: Image.asset('images/${urun_image}'),
           flex: 3,
         ),
         Flexible(

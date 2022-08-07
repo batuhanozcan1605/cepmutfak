@@ -1,5 +1,5 @@
-import 'package:cepmutfak/screens/screens.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class DolapScreen extends StatefulWidget {
   const DolapScreen({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class _DolapScreenState extends State<DolapScreen>  {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFF4D818C),
-          title: Text('Cep Mutfak'),
+          title: SvgPicture.asset('images/appbar_logo.svg'),
           bottom: TabBar(
             tabs: [
               Tab(text: 'BUZDOLABI'),

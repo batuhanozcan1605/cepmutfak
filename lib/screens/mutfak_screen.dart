@@ -1,15 +1,16 @@
+import 'package:cepmutfak/screens/buzdolabi_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class DolapScreen extends StatefulWidget {
-  const DolapScreen({Key? key}) : super(key: key);
+class MutfakScreen extends StatefulWidget {
+  const MutfakScreen({Key? key}) : super(key: key);
 
   @override
-  State<DolapScreen> createState() => _DolapScreenState();
+  State<MutfakScreen> createState() => _MutfakScreenState();
 }
 
 
-class _DolapScreenState extends State<DolapScreen>  {
+class _MutfakScreenState extends State<MutfakScreen>  {
 
 
   @override
@@ -31,7 +32,7 @@ class _DolapScreenState extends State<DolapScreen>  {
         ),
         body: TabBarView(
             children: [
-              Center(child: Text('Page 1',),),
+              BuzdolabiScreen(),
               Center(child: Text('Page 2',),),
               Center(child: Text('Page 3',),),
             ],

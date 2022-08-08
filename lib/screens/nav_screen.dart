@@ -14,7 +14,7 @@ class _NavScreenState extends State<NavScreen> {
 
   int currentindex = 0;
   final screens = [
-    DolapScreen(),
+    MutfakScreen(),
     EkleScreen(),
     ListScreen(),
   ];

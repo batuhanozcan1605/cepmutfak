@@ -5,11 +5,12 @@ class Urunler {
   String urun_name;
   String urun_image;
   String place;
-  int expiration;
+  int? expiration;
   Kategoriler kategori;
+  int? content;
 
   Urunler(this.urun_id, this.urun_name, this.urun_image, this.place,
-      this.expiration, this.kategori);
+      this.expiration, this.kategori, this.content);
 
 
 }

@@ -23,6 +23,12 @@ class _UrunlerBodyScreenState extends State<UrunlerBodyScreen> with TickerProvid
     _tabController = TabController(initialIndex: (widget.kategori.kategori_id - 1), length: 14, vsync: this);
   }
 
+  /*@override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }*/
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -39,13 +39,15 @@ class Urunlerdao {
   Future<List<Urunler>> urunSearch(String query) async {
     var db = await DatabaseHelper.databaseAccess();
 
-    List<Map<String,dynamic>> maps = await db.rawQuery("SELECT * FROM urunler WHERE urun_name like '%$query%'");
-
+    List<Map<String,dynamic>> maps = await db.rawQuery("SELECT * FROM urunler,kategoriler WHERE urunler.kategori_id = kategoriler.kategori_id and "
+        "urun_name like '%$query%'");
+    print("after sorgu");
     return List.generate(maps.length, (i) {
-
+      print("List generate");
       var row = maps[i];
+      print("before kategori");
       var k = Kategoriler(row["kategori_id"], row["kategori_name"], row["kategori_image"]);
-
+      print("before return");
       return Urunler(row["urun_id"], row["urun_name"], row["urun_image"], row["place"], row["expiration"], k, row["content"]);
 
     });

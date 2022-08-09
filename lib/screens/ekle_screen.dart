@@ -14,8 +14,9 @@ class EkleScreen extends StatefulWidget {
 }
 
 class _EkleScreenState extends State<EkleScreen> {
-  final controller = TextEditingController();
+
   String query = '';
+  bool isSearching = false;
 
 
   Future<List<Kategoriler>> showAllKategoriler() async {
@@ -24,7 +25,9 @@ class _EkleScreenState extends State<EkleScreen> {
   }
 
   Future<List<Urunler>> searchUrunler(query) async {
+    print("before dao");
     var urunlerListesi = await Urunlerdao().urunSearch(query);
+    print("before return search");
     return urunlerListesi;
   }
 
@@ -74,17 +77,25 @@ class _EkleScreenState extends State<EkleScreen> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(20, 11, 20, 11),
               child: TextField(
-                controller: controller,
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
                   hintText: 'Ürün ekle',
-
                 ),
-                //onChanged: searchUrunler,
+                onTap: (){
+                  setState(() {
+                    isSearching = true;
+                  });
+                },
+                onChanged: (result){
+                  setState(() {
+                    query = result;
+                    print(result);
+                  });
+                },
               ),
             ),
           ),
-          Padding(
+           isSearching ? Center() : Padding(
             padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
             child: SizedBox(
               height: 80,
@@ -127,7 +138,27 @@ class _EkleScreenState extends State<EkleScreen> {
             ),
           ),
           ),
+          isSearching ?
               Expanded(
+                  child: FutureBuilder<List<Urunler>>(
+                    future: searchUrunler(query),
+                    builder: (context, snapshot) {
+                      if(snapshot.hasData) {
+                        var urunlerList = snapshot.data;
+                        return ListView.builder(
+                            itemCount: urunlerList!.length,
+                            itemBuilder: (context, index) {
+                              var urun = urunlerList[index];
+                                return Text(urun.urun_name);
+                            }
+                        );
+                      } else {
+                        return Center();
+                      }
+                    },
+                  )
+              )
+              : Expanded(
                   child: FutureBuilder<List<Kategoriler>>(
                       future: showAllKategoriler(),
                       builder: (context, snapshot) {

@@ -36,10 +36,10 @@ class Urunlerdao {
     });
   }
 
-  Future<List<Urunler>> urunSearch() async {
+  Future<List<Urunler>> urunSearch(String query) async {
     var db = await DatabaseHelper.databaseAccess();
 
-    List<Map<String,dynamic>> maps = await db.rawQuery("SELECT * FROM urunler WHERE urun_name like '%n%'");
+    List<Map<String,dynamic>> maps = await db.rawQuery("SELECT * FROM urunler WHERE urun_name like '%$query%'");
 
     return List.generate(maps.length, (i) {
 

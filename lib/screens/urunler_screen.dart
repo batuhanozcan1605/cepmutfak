@@ -22,11 +22,6 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
     return urunlerListesi;
   }
 
-  Future<List<Urunler>> searchUrunler(String query) async {
-    var urunlerListesi= await Urunlerdao().urunSearch();
-    return urunlerListesi;
-  }
-
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List<Urunler>>(

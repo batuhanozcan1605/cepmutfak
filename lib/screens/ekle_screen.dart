@@ -15,7 +15,7 @@ class EkleScreen extends StatefulWidget {
 
 class _EkleScreenState extends State<EkleScreen> {
   final controller = TextEditingController();
-  bool onTappedSearch = false;
+  String query = '';
 
 
   Future<List<Kategoriler>> showAllKategoriler() async {
@@ -23,10 +23,8 @@ class _EkleScreenState extends State<EkleScreen> {
     return kategoriListesi;
   }
 
-  Future<List<Urunler>> searchUrunler() async {
-    print("object1");
-    var urunlerListesi = await Urunlerdao().urunSearch();
-    print("object");
+  Future<List<Urunler>> searchUrunler(query) async {
+    var urunlerListesi = await Urunlerdao().urunSearch(query);
     return urunlerListesi;
   }
 
@@ -80,12 +78,7 @@ class _EkleScreenState extends State<EkleScreen> {
                 decoration: InputDecoration(
                   prefixIcon: const Icon(Icons.search),
                   hintText: 'Ürün ekle',
-                  suffixIcon: onTappedSearch
-                      ? IconButton(
-                          icon: Icon(Icons.cancel),
-                          onPressed: () {},
-                        )
-                      : Center(),
+
                 ),
                 //onChanged: searchUrunler,
               ),
@@ -134,25 +127,7 @@ class _EkleScreenState extends State<EkleScreen> {
             ),
           ),
           ),
-          onTappedSearch
-              ? Expanded(
-                  child: FutureBuilder<List<Urunler>>(
-                  future: searchUrunler(),
-                  builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      var urunlerList = snapshot.data;
-                      return ListView.builder(
-                          itemCount: urunlerList!.length,
-                          itemBuilder: (context, index) {
-                            var urunler = urunlerList[index];
-                            return Text(urunler.urun_name);
-                          });
-                    } else {
-                      return const Center(child: Text("No data"));
-                    }
-                  },
-                ))
-              : Expanded(
+              Expanded(
                   child: FutureBuilder<List<Kategoriler>>(
                       future: showAllKategoriler(),
                       builder: (context, snapshot) {

@@ -59,7 +59,6 @@ class Urunlerdao {
     info["content"] = content;
     
     await db.update("urunler", info, where: "urun_id = ?", whereArgs: [urun_id]);
-
   }
 
 }

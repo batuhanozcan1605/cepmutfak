@@ -1,4 +1,5 @@
 import 'package:cepmutfak/screens/buzdolabi_screen.dart';
+import 'package:cepmutfak/screens/dondurucu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -36,7 +37,7 @@ class _MutfakScreenState extends State<MutfakScreen>  {
             children: [
               BuzdolabiScreen(),
               KilerScreen(),
-              Center(child: Text('Page 3',),),
+              DondurucuScreen(),
             ],
             ),
       ),

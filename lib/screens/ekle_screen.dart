@@ -25,9 +25,8 @@ class _EkleScreenState extends State<EkleScreen> {
   }
 
   Future<List<Urunler>> searchUrunler(query) async {
-    print("before dao");
+
     var urunlerListesi = await Urunlerdao().urunSearch(query);
-    print("before return search");
     return urunlerListesi;
   }
 
@@ -79,10 +78,20 @@ class _EkleScreenState extends State<EkleScreen> {
               ],
             ),
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(20, 11, 20, 11),
+              padding: const EdgeInsets.fromLTRB(20, 0, 20, 6),
               child: TextField(
                 decoration: InputDecoration(
+                  fillColor: Color(0xFF4D818C),
+                  prefixIconColor: Color(0xFF4D818C),
                   prefixIcon: const Icon(Icons.search),
+                  suffix: isSearching ? IconButton(
+                    icon: const Icon(Icons.cancel),
+                    onPressed: (){
+                      setState(() {
+                        isSearching = false;
+                      });
+                    },
+                  ) : Center(),
                   hintText: 'Ürün ekle',
                 ),
                 onTap: (){
@@ -117,12 +126,12 @@ class _EkleScreenState extends State<EkleScreen> {
                       alignment: Alignment.center,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
+                        children: const [
                           Text('Kendine Özel Ürün Ekle',
                           style: TextStyle(
                             fontFamily: 'Segoe UI',
                             fontSize: 15,
-                            color: const Color(0xff013440),
+                            color: Color(0xff013440),
                             fontWeight: FontWeight.w600,
                           )
                             ),
@@ -130,7 +139,7 @@ class _EkleScreenState extends State<EkleScreen> {
                               style: TextStyle(
                                 fontFamily: 'Segoe UI',
                                 fontSize: 10,
-                                color: const Color(0xFF4D818C),
+                                color: Color(0xFF4D818C),
                               )
                           )
                         ],
@@ -138,7 +147,6 @@ class _EkleScreenState extends State<EkleScreen> {
                     )
                   ]
                 ),
-
             ),
           ),
           ),
@@ -165,7 +173,7 @@ class _EkleScreenState extends State<EkleScreen> {
                                               child: Text(
                                                 urun.urun_name,
                                                 style: TextStyle(
-                                                  fontWeight: FontWeight.w300,
+                                                  fontWeight: FontWeight.w600,
                                               ),
                                               ),
                                             ),
@@ -174,7 +182,21 @@ class _EkleScreenState extends State<EkleScreen> {
                                               child: IconButton(
                                                 onPressed: (){
                                                   urunMutfakta(urun.urun_id);
-                                               },
+                                                  final snackBar = SnackBar(
+                                                      action: SnackBarAction(
+                                                          label: 'Geri Al',
+                                                          onPressed: (){
+
+                                                      }),
+                                                      content: Text("${urun.urun_name} Mutfağa Eklendi",
+                                                      style: TextStyle(
+                                                        color: Colors.white70,
+                                                       ),
+                                                      ),
+                                                      backgroundColor: Color(0xFF013440),
+                                                  );
+                                                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                                                },
                                                   icon: Icon(Icons.add_circle, color: Color(0xFF4D818C),),
                                               ),
                                             ),

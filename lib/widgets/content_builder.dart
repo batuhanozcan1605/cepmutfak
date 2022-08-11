@@ -45,6 +45,7 @@ class _ContentBuilderState extends State<ContentBuilder> {
                     ),
                   ),
                   GridView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       padding: const EdgeInsets.all(10),
                       shrinkWrap: true,
                       itemCount: urunlerListesi.length,

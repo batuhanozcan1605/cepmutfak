@@ -18,7 +18,6 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
 
   Future<List<Urunler>> showUrunler(int kategori_id) async {
     var urunlerListesi= await Urunlerdao().allUrunlerByKategoriId(kategori_id);
-    print("4object");
     return urunlerListesi;
   }
 

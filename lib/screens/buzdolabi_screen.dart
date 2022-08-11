@@ -18,7 +18,7 @@ class _BuzdolabiScreenState extends State<BuzdolabiScreen> {
     return urunlerListesi;
   }
 
-  Future<void> checkContent() async {
+  /*Future<void> checkContent() async {
     for (var i = 1; i <= 14; i++) {
       var list = await Urunlerdao().allUrunlerByKategoriId(i);
 
@@ -32,7 +32,7 @@ class _BuzdolabiScreenState extends State<BuzdolabiScreen> {
   void initState() {
     super.initState();
     checkContent();
-  }
+  }*/
 
   @override
   Widget build(BuildContext context) {

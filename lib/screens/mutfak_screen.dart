@@ -2,6 +2,8 @@ import 'package:cepmutfak/screens/buzdolabi_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'kiler_screen.dart';
+
 class MutfakScreen extends StatefulWidget {
   const MutfakScreen({Key? key}) : super(key: key);
 
@@ -33,7 +35,7 @@ class _MutfakScreenState extends State<MutfakScreen>  {
         body: TabBarView(
             children: [
               BuzdolabiScreen(),
-              Center(child: Text('Page 2',),),
+              KilerScreen(),
               Center(child: Text('Page 3',),),
             ],
             ),

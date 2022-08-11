@@ -36,6 +36,10 @@ class _EkleScreenState extends State<EkleScreen> {
     return urunlerListesi;
   }
 
+  Future<void> urunMutfakta(urun_id) async {
+    await Urunlerdao().updateContent(urun_id, 1);
+  }
+
   /*Future<void> kategoriGoster() async {
     var liste = await Kategorilerdao().allKategoriler();
 
@@ -149,7 +153,34 @@ class _EkleScreenState extends State<EkleScreen> {
                             itemCount: urunlerList!.length,
                             itemBuilder: (context, index) {
                               var urun = urunlerList[index];
-                                return Text(urun.urun_name);
+                                return Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                      child:
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.only(left:  10.0),
+                                              child: Text(
+                                                urun.urun_name,
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w300,
+                                              ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(right: 10.0),
+                                              child: IconButton(
+                                                onPressed: (){
+                                                  urunMutfakta(urun.urun_id);
+                                               },
+                                                  icon: Icon(Icons.add_circle, color: Color(0xFF4D818C),),
+                                              ),
+                                            ),
+                                          ])
+                                  ),
+                                );
                             }
                         );
                       } else {
@@ -186,7 +217,7 @@ class _EkleScreenState extends State<EkleScreen> {
                                 );
                               });
                         } else {
-                          return const Center(child: Text("No data"));
+                          return const Center(child: Text(""));
                         }
                       }),
                 ),

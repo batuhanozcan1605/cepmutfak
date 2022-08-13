@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 class Widgets {
 
-static Widget urunCard(String urun_name, String urun_image, int index) => Card(
-    color:  Colors.white,
+static Widget urunCard(String urun_name, String urun_image, bool tapped) => Card(
+    color: tapped ? Colors.blueGrey : Colors.white,
     clipBehavior: Clip.antiAlias,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10),
@@ -41,7 +41,6 @@ static Widget urunCard(String urun_name, String urun_image, int index) => Card(
         ),
       ],
     ),
-  ),
-);
+  );
 
 }

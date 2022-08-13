@@ -55,7 +55,7 @@ class _ContentBuilderState extends State<ContentBuilder> {
                           onTap: (){
 
                           },
-                          child: Widgets.urunCard(urun.urun_name, urun.urun_image),
+                          child: Widgets.urunCard(urun.urun_name, urun.urun_image, false),
                         );
                       },
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

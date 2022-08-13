@@ -46,7 +46,7 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
                     onTap: (){
                       tapCardObject.changeBoolList(index, widget.kategori, true);
                     },
-                    child: Widgets.urunCard(urun.urun_name, urun.urun_image, index)
+                    child: Widgets.urunCard(urun.urun_name, urun.urun_image, tapCardObject.tapMap[widget.kategori]![index])
                   );
                   }
                 );

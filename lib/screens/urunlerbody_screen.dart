@@ -75,7 +75,30 @@ class _UrunlerBodyScreenState extends State<UrunlerBodyScreen> with TickerProvid
           UrunlerScreen(kategori: 13),
           UrunlerScreen(kategori: 14),
         ],
-      )
+      ),
+      bottomNavigationBar: BottomAppBar(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            addToMutfak(),
+            addToListe()
+          ],
+        ),
+      ),
     );
+
   }
+
+  Widget addToMutfak() {
+    return ElevatedButton(
+        onPressed: () {
+
+      }, child: Text("Mutfağa Ekle"));
+  }
+}
+
+    Widget addToListe() {
+  return ElevatedButton(onPressed: () {
+
+    }, child: Text("Alışveriş Listesine Ekle"));
 }

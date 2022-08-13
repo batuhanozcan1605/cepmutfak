@@ -1,4 +1,4 @@
-import 'package:cepmutfak/widgets/widgets_class.dart';
+import 'package:cepmutfak/widgets/static_widgets.dart';
 import 'package:flutter/cupertino.dart';
 
 import '../database/Urunlerdao.dart';
@@ -55,7 +55,7 @@ class _ContentBuilderState extends State<ContentBuilder> {
                           onTap: (){
 
                           },
-                          child: Widgets.urunCard(urun.urun_name, urun.urun_image, false),
+                          child: StaticWidgets.urunCard(urun.urun_name, urun.urun_image, false),
                         );
                       },
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

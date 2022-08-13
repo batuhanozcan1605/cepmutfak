@@ -1,6 +1,6 @@
 import 'package:cepmutfak/models/Urunler.dart';
 import 'package:cepmutfak/widgets/content_builder.dart';
-import 'package:cepmutfak/widgets/widgets_class.dart';
+import 'package:cepmutfak/widgets/static_widgets.dart';
 import 'package:flutter/cupertino.dart';
 import '../database/Urunlerdao.dart';
 

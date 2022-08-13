@@ -28,7 +28,6 @@ class UrunCard extends StatelessWidget {
               flex: 1,
               child: Container(
                 height: 25,
-                color: tapped ? Colors.tealAccent : Colors.white,
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 4),
                   child: Align(

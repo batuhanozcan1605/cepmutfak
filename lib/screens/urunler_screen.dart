@@ -1,5 +1,7 @@
+import 'package:cepmutfak/providers/TapCardsModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../database/Urunlerdao.dart';
 import '../models/Kategoriler.dart';
 import '../models/Urunler.dart';
@@ -38,11 +40,15 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
               itemCount: urunlerListesi!.length,
               itemBuilder: (context,index){
                 var urun = urunlerListesi[index];
-                return GestureDetector(
-                  onTap: (){
-
-                  },
-                  child: Widgets.urunCard(urun.urun_name, urun.urun_image)
+                return Consumer<TapCardsModel>(
+                  builder: (context, tapCardObject, child){
+                  return GestureDetector(
+                    onTap: (){
+                      tapCardObject.changeBoolList(index, widget.kategori, true);
+                    },
+                    child: Widgets.urunCard(urun.urun_name, urun.urun_image, index)
+                  );
+                  }
                 );
               });
         } else {

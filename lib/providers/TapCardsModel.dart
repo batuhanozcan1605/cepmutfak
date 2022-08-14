@@ -72,10 +72,10 @@ class TapCardsModel extends ChangeNotifier {
     }
     notifyListeners();
   }
-
+/*
   void tapCollector(kategori_id, index) {
     changeBoolList(index, kategori_id, !tapMap[kategori_id]![index]);
     notifyListeners();
   }
-
+*/
 }

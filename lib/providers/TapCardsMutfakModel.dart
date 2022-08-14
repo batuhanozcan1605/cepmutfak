@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 
 class TapCardsMutfakModel extends ChangeNotifier {
 
+  final idListInMutfak = List.generate(0, (index) => 0, growable: true);
+
   static int maxUrunCountInAKategori = 4;
   final boolList1 = List<bool>.generate(
       maxUrunCountInAKategori, (index) => false);
@@ -141,6 +143,20 @@ class TapCardsMutfakModel extends ChangeNotifier {
       }
       break;
     }
+    notifyListeners();
+  }
+
+  List readIdListInMutfak() {
+    return idListInMutfak;
+  }
+
+  void addToIdList(urun_id) async {
+    idListInMutfak.add(urun_id);
+    notifyListeners();
+  }
+
+  void removeIdFromList(urun_id) async {
+    idListInMutfak.remove(urun_id);
     notifyListeners();
   }
 

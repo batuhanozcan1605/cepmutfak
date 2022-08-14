@@ -59,7 +59,8 @@ class _ContentBuilderState extends State<ContentBuilder> {
                             return GestureDetector(
                               onTap: () {
                                 tapCardMutfakObject.tapCollectorMutfak(widget.place, widget.kategori_id, index);
-                                //tapCardMutfakObject.tapMapMutfak[widget.place]![widget.kategori_id]![index] ?
+                                tapCardMutfakObject.tapMapMutfak[widget.place]![widget.kategori_id]![index] ? tapCardMutfakObject.addToIdList(urun.urun_id) :
+                                    tapCardMutfakObject.removeIdFromList(urun.urun_id);
                               },
                               child: StaticWidgets.urunCardMutfak(
                                   urun.urun_name,

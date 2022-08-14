@@ -2,20 +2,21 @@ import 'package:flutter/foundation.dart';
 
 class TapCardsModel extends ChangeNotifier {
 
-  final boolList1 = List<bool>.generate(4, (index) => false);
-  final boolList2 = List<bool>.generate(4, (index) => false);
-  final boolList3 = List<bool>.generate(4, (index) => false);
-  final boolList4 = List<bool>.generate(4, (index) => false);
-  final boolList5 = List<bool>.generate(4, (index) => false);
-  final boolList6 = List<bool>.generate(4, (index) => false);
-  final boolList7 = List<bool>.generate(4, (index) => false);
-  final boolList8 = List<bool>.generate(4, (index) => false);
-  final boolList9 = List<bool>.generate(4, (index) => false);
-  final boolList10 = List<bool>.generate(4, (index) => false);
-  final boolList11 = List<bool>.generate(4, (index) => false);
-  final boolList12 = List<bool>.generate(4, (index) => false);
-  final boolList13 = List<bool>.generate(4, (index) => false);
-  final boolList14 = List<bool>.generate(4, (index) => false);
+  static int maxUrunCountInAKategori = 4;
+  final boolList1 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList2 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList3 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList4 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList5 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList6 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList7 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList8 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList9 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList10 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList11 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList12 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList13 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+  final boolList14 = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
 
   late Map<int, List> tapMap = {
     1 : boolList1,
@@ -53,6 +54,19 @@ class TapCardsModel extends ChangeNotifier {
     tapMap[key]![index] = tapped;
     notifyListeners();
   }
+
+  Map<int, List> generateMap() {
+    for(var i=1; i<=14; i++) {
+      tapMap[i] = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+    }
+    return tapMap;
+  }
+
+  void regenerateMap() {
+    tapMap = generateMap();
+    notifyListeners();
+  }
+
 
   /*List<List<bool>> readTapList() {
     return tapList;

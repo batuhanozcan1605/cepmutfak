@@ -1,5 +1,6 @@
 import 'package:cepmutfak/models/Kategoriler.dart';
 import 'package:cepmutfak/providers/AddUrunlerModel.dart';
+import 'package:cepmutfak/providers/TapCardsModel.dart';
 import 'package:cepmutfak/screens/urunler_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -87,16 +88,18 @@ class _UrunlerBodyScreenState extends State<UrunlerBodyScreen>
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Consumer<AddUrunlerModel>(
-                builder: (context, addUrunlerObject, child) {
+            Consumer2<TapCardsModel, AddUrunlerModel>(
+                builder: (context, tapCardsObject, addUrunlerObject, child) {
                   return SizedBox(
                     width: screenWidth*(17/36),
                     child: ElevatedButton(
                         onPressed: () {
                           addUrunlerObject.addBatchToMutfak();
                           addUrunlerObject.idListToMutfak.clear();
+                          tapCardsObject.regenerateMap();
                         },
                         child: Text("Mutfağa Ekle")),
+                    
                   );
                 }),
             SizedBox(

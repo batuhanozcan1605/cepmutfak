@@ -61,4 +61,13 @@ class Urunlerdao {
     await db.update("urunler", info, where: "urun_id = ?", whereArgs: [urun_id]);
   }
 
+  static Future<void> updateContentStatic(int urun_id, int content) async {
+    var db = await DatabaseHelper.databaseAccess();
+
+    var info = Map<String, dynamic>();
+    info["content"] = content;
+
+    await db.update("urunler", info, where: "urun_id = ?", whereArgs: [urun_id]);
+  }
+
 }

@@ -1,10 +1,11 @@
 import 'package:cepmutfak/models/Kategoriler.dart';
+import 'package:cepmutfak/providers/AddUrunlerModel.dart';
 import 'package:cepmutfak/screens/urunler_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class UrunlerBodyScreen extends StatefulWidget {
-
   Kategoriler kategori;
 
   UrunlerBodyScreen({required this.kategori});
@@ -13,14 +14,17 @@ class UrunlerBodyScreen extends StatefulWidget {
   State<UrunlerBodyScreen> createState() => _UrunlerBodyScreenState();
 }
 
-class _UrunlerBodyScreenState extends State<UrunlerBodyScreen> with TickerProviderStateMixin {
-
+class _UrunlerBodyScreenState extends State<UrunlerBodyScreen>
+    with TickerProviderStateMixin {
   late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(initialIndex: (widget.kategori.kategori_id - 1), length: 14, vsync: this);
+    _tabController = TabController(
+        initialIndex: (widget.kategori.kategori_id - 1),
+        length: 14,
+        vsync: this);
   }
 
   /*@override
@@ -31,6 +35,9 @@ class _UrunlerBodyScreenState extends State<UrunlerBodyScreen> with TickerProvid
 
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final screenWidth = screenSize.width;
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFF4D818C),
@@ -80,25 +87,47 @@ class _UrunlerBodyScreenState extends State<UrunlerBodyScreen> with TickerProvid
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            addToMutfak(),
-            addToListe()
+            Consumer<AddUrunlerModel>(
+                builder: (context, addUrunlerObject, child) {
+                  return SizedBox(
+                    width: screenWidth*(17/36),
+                    child: ElevatedButton(
+                        onPressed: () {
+                          addUrunlerObject.addBatchToMutfak();
+                          addUrunlerObject.idListToMutfak.clear();
+                        },
+                        child: Text("Mutfağa Ekle")),
+                  );
+                }),
+            SizedBox(
+              width: screenWidth*(17/36),
+              child: ElevatedButton(
+                  onPressed: () {
+
+                  },
+                  child: Text("Alışveriş Listesine Ekle")),
+            )
           ],
         ),
       ),
     );
-
   }
 
-  Widget addToMutfak() {
-    return ElevatedButton(
-        onPressed: () {
-
-      }, child: Text("Mutfağa Ekle"));
+/*
+  Widget addToMutfak(context) {
+    return Consumer<AddUrunlerModel>(
+        builder: (context, addUrunlerObject, child) {
+      return ElevatedButton(
+          onPressed: () {
+            addUrunlerObject.addBatchToMutfak();
+          },
+          child: Text("Mutfağa Ekle"));
+    });
   }
 }
 
-    Widget addToListe() {
-  return ElevatedButton(onPressed: () {
-
-    }, child: Text("Alışveriş Listesine Ekle"));
+  Widget addToShoppingList() {
+    return ElevatedButton(
+        onPressed: () {}, child: Text("Alışveriş Listesine Ekle"));
+  }*/
 }

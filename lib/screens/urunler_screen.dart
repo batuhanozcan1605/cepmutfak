@@ -1,3 +1,4 @@
+import 'package:cepmutfak/providers/AddUrunlerModel.dart';
 import 'package:cepmutfak/providers/TapCardsModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,14 +40,16 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
                 itemCount: urunlerListesi!.length,
                 itemBuilder: (context, index) {
                   var urun = urunlerListesi[index];
-                  return Consumer<TapCardsModel>(
-                      builder: (context, tapCardObject, child) {
+                  return Consumer2<TapCardsModel, AddUrunlerModel>(
+                      builder: (context, tapCardObject, addUrunlerObject, child) {
                     return GestureDetector(
                         onTap: () {
                           if (tapCardObject.tapMap[widget.kategori]![index] == false) {
                             tapCardObject.changeBoolList(index, widget.kategori, true);
+                            addUrunlerObject.addToIdList(urun.urun_id);
                           } else {
                             tapCardObject.changeBoolList(index, widget.kategori, false);
+                            addUrunlerObject.removeIdFromList(urun.urun_id);
                           }
                         },
                         child: StaticWidgets.urunCard(

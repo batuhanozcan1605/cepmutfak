@@ -1,3 +1,4 @@
+import 'package:cepmutfak/providers/AddUrunlerModel.dart';
 import 'package:cepmutfak/providers/TapCardsModel.dart';
 import 'package:cepmutfak/screens/nav_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => TapCardsModel()),
+        ChangeNotifierProvider(create: (context) => AddUrunlerModel()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

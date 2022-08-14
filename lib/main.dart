@@ -1,5 +1,6 @@
 import 'package:cepmutfak/providers/AddUrunlerModel.dart';
 import 'package:cepmutfak/providers/TapCardsModel.dart';
+import 'package:cepmutfak/providers/TapCardsMutfakModel.dart';
 import 'package:cepmutfak/screens/nav_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => TapCardsModel()),
         ChangeNotifierProvider(create: (context) => AddUrunlerModel()),
+        ChangeNotifierProvider(create: (context) => TapCardsMutfakModel())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

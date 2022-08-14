@@ -1,6 +1,9 @@
+import 'package:cepmutfak/providers/TapCardsModel.dart';
+import 'package:cepmutfak/providers/TapCardsMutfakModel.dart';
 import 'package:cepmutfak/widgets/static_widgets.dart';
+import 'package:cepmutfak/widgets/urun_card.dart';
 import 'package:flutter/cupertino.dart';
-
+import 'package:provider/provider.dart';
 import '../database/Urunlerdao.dart';
 import '../models/Urunler.dart';
 
@@ -51,12 +54,19 @@ class _ContentBuilderState extends State<ContentBuilder> {
                       itemCount: urunlerListesi.length,
                       itemBuilder: (context,index){
                         var urun = urunlerListesi[index];
-                        return GestureDetector(
-                          onTap: (){
-
-                          },
-                          child: StaticWidgets.urunCard(urun.urun_name, urun.urun_image, false),
-                        );
+                        return Consumer<TapCardsMutfakModel>(
+                          builder: (contex, tapCardMutfakObject,child) {
+                            return GestureDetector(
+                              onTap: () {
+                                tapCardMutfakObject.tapCollectorMutfak(widget.place, widget.kategori_id, index);
+                                //tapCardMutfakObject.tapMapMutfak[widget.place]![widget.kategori_id]![index] ?
+                              },
+                              child: StaticWidgets.urunCardMutfak(
+                                  urun.urun_name,
+                                  urun.urun_image,
+                                  tapCardMutfakObject.tapMapMutfak[widget.place]![widget.kategori_id]![index]),
+                            );
+                          });
                       },
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 3,

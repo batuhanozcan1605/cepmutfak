@@ -13,25 +13,9 @@ class BuzdolabiScreen extends StatefulWidget {
 
 class _BuzdolabiScreenState extends State<BuzdolabiScreen> {
 
-  Future<List<Urunler>> showContent(int kategori_id, place) async {
+  /*Future<List<Urunler>> showContent(int kategori_id, place) async {
     var urunlerListesi = await Urunlerdao().urunlerContent(kategori_id, place);
     return urunlerListesi;
-  }
-
-  /*Future<void> checkContent() async {
-    for (var i = 1; i <= 14; i++) {
-      var list = await Urunlerdao().allUrunlerByKategoriId(i);
-
-      for (Urunler u in list) {
-        print("${u.urun_name}:${u.content}");
-      }
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    checkContent();
   }*/
 
   @override

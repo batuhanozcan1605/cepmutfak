@@ -99,7 +99,6 @@ class _UrunlerBodyScreenState extends State<UrunlerBodyScreen>
                           tapCardsObject.regenerateMap();
                         },
                         child: Text("Mutfağa Ekle")),
-                    
                   );
                 }),
             SizedBox(

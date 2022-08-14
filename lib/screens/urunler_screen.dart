@@ -59,7 +59,7 @@ class _UrunlerScreenState extends State<UrunlerScreen> {
                   });
                 });
           } else {
-            return Center(child: Text("no data"));
+            return Center(child: Text(""));
           }
         });
   }

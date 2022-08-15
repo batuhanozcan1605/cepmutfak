@@ -115,21 +115,4 @@ class _UrunlerBodyScreenState extends State<UrunlerBodyScreen>
     );
   }
 
-/*
-  Widget addToMutfak(context) {
-    return Consumer<AddUrunlerModel>(
-        builder: (context, addUrunlerObject, child) {
-      return ElevatedButton(
-          onPressed: () {
-            addUrunlerObject.addBatchToMutfak();
-          },
-          child: Text("Mutfağa Ekle"));
-    });
-  }
-}
-
-  Widget addToShoppingList() {
-    return ElevatedButton(
-        onPressed: () {}, child: Text("Alışveriş Listesine Ekle"));
-  }*/
 }

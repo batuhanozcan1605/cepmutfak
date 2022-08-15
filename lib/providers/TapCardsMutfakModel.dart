@@ -119,13 +119,6 @@ class TapCardsMutfakModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Map<int, List> generateMapBuzdolabi() {
-    for(var i=1; i<=14; i++) {
-      tapMapBuzdolabi[i] = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
-    }
-    return tapMapBuzdolabi;
-  }
-
   void tapCollectorMutfak(place, kategori_id, index) {
     switch(place) {
       case 'buzdolabi' : {
@@ -160,4 +153,30 @@ class TapCardsMutfakModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  bool isTappingInMutfak() {
+    if(idListInMutfak.isEmpty) {
+
+      return false;
+    } else {
+
+      return true;
+    }
+  }
+
+  void clearIdList() {
+    idListInMutfak.clear();
+    notifyListeners();
+  }
+
+  void regenerateMap() {
+    for(var i=1; i<=14; i++) {
+      tapMapBuzdolabi[i] = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+    }
+    for(var i=1; i<=14; i++) {
+      tapMapKiler[i] = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+    }
+    for(var i=1; i<=14; i++) {
+      tapMapDondurucu[i] = List<bool>.generate(maxUrunCountInAKategori, (index) => false);
+    }
+  }
 }

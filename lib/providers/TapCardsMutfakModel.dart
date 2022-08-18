@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 class TapCardsMutfakModel extends ChangeNotifier {
 
-  final idListInMutfak = List.generate(0, (index) => 0, growable: true);
+  final idListInMutfak = <int>[];
 
   static int maxUrunCountInAKategori = 4;
   final boolList1 = List<bool>.generate(

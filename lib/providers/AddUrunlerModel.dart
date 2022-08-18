@@ -3,7 +3,7 @@ import '../database/Urunlerdao.dart';
 
 class AddUrunlerModel extends ChangeNotifier {
 
-  final idListToMutfak = List.generate(0, (index) => 0, growable: true);
+  final idListToMutfak = <int>[];
 
   List readIdListToMutfak() {
     return idListToMutfak;
@@ -19,10 +19,11 @@ class AddUrunlerModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> addBatchToMutfak() async {
-    for(int i = 0; i <= idListToMutfak.length; i++) {
-       await Urunlerdao.updateContentStatic(idListToMutfak[i],1);
-    }
+ Future<void> addBatchToMutfak(idList) async {
+   for(int urun_id in idList) {
+     print("test: ${idList}, $urun_id");
+     await Urunlerdao().updateContent(urun_id, 1);
+   }
     notifyListeners();
   }
 

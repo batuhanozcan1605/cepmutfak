@@ -57,8 +57,9 @@ class Urunlerdao {
 
     var info = Map<String, dynamic>();
     info["content"] = content;
-    
+    print("info formed");
     await db.update("urunler", info, where: "urun_id = ?", whereArgs: [urun_id]);
+    print("test: $urun_id");
   }
 
   static Future<void> updateContentStatic(int urun_id, int content) async {
@@ -68,6 +69,18 @@ class Urunlerdao {
     info["content"] = content;
 
     await db.update("urunler", info, where: "urun_id = ?", whereArgs: [urun_id]);
+  }
+
+  Future<void> updateBatchContent(List idList, content) async {
+    var db = await DatabaseHelper.databaseAccess();
+
+    var info = Map<String, dynamic>();
+    info["content"] = content;
+    print("test: info has formed");
+    for(var i=0; i <= idList.length-1; i++){
+      print("test: in for, $i");
+    await db.update("urunler", info, where: "urun_id = ?", whereArgs: [idList[i]]);
+    }
   }
 
 }

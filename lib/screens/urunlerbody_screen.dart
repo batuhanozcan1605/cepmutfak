@@ -5,6 +5,7 @@ import 'package:cepmutfak/screens/urunler_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../database/Urunlerdao.dart';
 
 class UrunlerBodyScreen extends StatefulWidget {
   Kategoriler kategori;
@@ -93,8 +94,9 @@ class _UrunlerBodyScreenState extends State<UrunlerBodyScreen>
                   return SizedBox(
                     width: screenWidth*(17/36),
                     child: ElevatedButton(
-                        onPressed: () {
-                          addUrunlerObject.addBatchToMutfak();
+                        onPressed: () async {
+                          print("test: pressed");
+                          await addUrunlerObject.addBatchToMutfak(addUrunlerObject.idListToMutfak);
                           addUrunlerObject.idListToMutfak.clear();
                           tapCardsObject.regenerateMap();
                         },
